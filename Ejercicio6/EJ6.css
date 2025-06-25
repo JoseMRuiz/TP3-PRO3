@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input, button {
+    margin: 10px;
+    padding: 5px;
+}
+
+.amarillo {
+    color: yellow;
+}
+
+.verde {
+    color: green;
+}
+
+.naranja {
+    color: orange;
+}
+
+.rojo {
+    color: red;
+}
+
+.negro {
+    color: black;
+}
