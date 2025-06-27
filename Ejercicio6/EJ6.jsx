@@ -5,7 +5,8 @@ function App() {
     const [mensaje, setMensaje] = React.useState('');
     const [color, setColor] = React.useState('');
 
-    const calcularIMC = () => {
+    const calcularIMC = (e) => {
+        e.preventDefault();
         const pesoNum = parseFloat(peso);
         const alturaNum = parseFloat(altura);
 
@@ -38,6 +39,7 @@ function App() {
     return (
         <div className="contenedor">
             <h2>Calculadora de IMC</h2>
+            <form onSubmit={calcularIMC}></form>
             <input
                 type="number"
                 value={peso}
