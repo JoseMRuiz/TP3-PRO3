@@ -6,15 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <input id="numero1"  type="number">
-    <input id="numero2" type="number">
-    <select id="operacion">
-        <option value="suma">suma</option>
-        <option value="resta">resta</option>
-        <option value="multiplicacion">multiplicacion</option>
-        <option value="division">division</option>
-    </select>
-    <button id="calcular">Calcular</button>
+
+    <h1>Calculadora</h1>
+
+    <form id="formulario" >
+        <label for="numero1">Número 1:</label>
+        <input id="numero1" type="number" required><br><br>
+
+        <label for="numero2">Número 2:</label>
+        <input id="numero2" type="number" required><br><br>
+
+        <label for="operacion">Operación:</label>
+        <select id="operacion">
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplicacion">Multiplicación</option>
+            <option value="division">División</option>
+        </select><br><br>
+
+       <input type="submit" id="calcular">
+    </form>
+
     <p id="resultado"></p>
 
     <script src="EJ1.js"></script>

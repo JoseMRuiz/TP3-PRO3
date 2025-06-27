@@ -1,56 +1,60 @@
-const valor1 = document.getElementById("numero1")
-const valor2 = document.getElementById("numero2")
-const operacion = document.getElementById("operacion")
-const calcular = document.getElementById("calcular")
-const resultado = document.getElementById("resultado")
+const valor1 = document.getElementById("numero1");
+const valor2 = document.getElementById("numero2");
+const operacion = document.getElementById("operacion");
+const calcular = document.getElementById("calcular");
+const resultado = document.getElementById("resultado");
+const formulario = document.getElementById("formulario");
 
-
-function verificarDivision () {
-    if(operacion.value == "division" && parseFloat(valor2.value) === 0){
-        calcular.disabled = true
-    }else{
-        calcular.disabled = false
+function verificarDivision() {
+    if (operacion.value === "division" && parseFloat(valor2.value) === 0) {
+        calcular.disabled = true;
+    } else {
+        calcular.disabled = false;
     }
 }
 
-operacion.addEventListener ("change",verificarDivision);
-valor2.addEventListener("input",verificarDivision)
+operacion.addEventListener("change", verificarDivision);
+valor2.addEventListener("input", verificarDivision);
 
-calcular.addEventListener("click",()=>{
+formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    const valor1= parseFloat(numero1.value);
-    const valor2= parseFloat(numero2.value);
+
+
+    const num1 = parseFloat(valor1.value);
+    const num2 = parseFloat(valor2.value);
     let res;
 
-
-    if (isNaN(valor1) || isNaN(valor2)) {
-        resultado.textContent="ingrese numero valido";
-        return
+    if (isNaN(num1) || isNaN(num2)) {
+        resultado.textContent = "Ingrese números válidos";
+        return;
     }
-    
 
-
-    switch(operacion.value){
+    switch (operacion.value) {
         case "suma":
-            res=valor1+valor2;
-        break;
+            res = num1 + num2;
+            break;
         case "resta":
-            res=valor1-valor2;
-        break;
+            res = num1 - num2;
+            break;
         case "multiplicacion":
-            res=valor1*valor2;
-        break;
-         case "division":
-            if(valor2 !== 0){
-                res=valor1/valor2;
-            }else{
-                res = "error"
+            res = num1 * num2;
+            break;
+        case "division":
+            if (num2 !== 0) {
+                res = num1 / num2;
+            } else {
+                res = "Error: División por cero";
             }
-            
-        break;
+            break;
         default:
-            res = "no puede realizar"  
+            res = "Operación no válida";
     }
-    resultado.textContent =  `resultado: ${res}`;
 
-})
+    resultado.textContent = `Resultado: ${res}`;
+
+   
+    valor1.value = "";
+    valor2.value = "";
+    calcular.disabled = false; 
+});
