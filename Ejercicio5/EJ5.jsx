@@ -25,6 +25,13 @@ function App() {
             case 'multiplicacion':
                 res = n1 * n2;
                 break;
+            case 'division':
+                if (n2 !== 0) {
+                    res = n1 / n2;
+                } else {
+                    res = 'Error: División por cero';
+                }
+                break;
             default:
                 res = 'Operación no válida';
         }
@@ -32,15 +39,17 @@ function App() {
         setResultado(res);
     };
 
+    const deshabilitarBoton = operacion === 'division' && parseFloat(numero2) === 0;
+
     return (
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <div >
             <h2>Calculadora</h2>
             <input
                 type="number"
                 value={numero1}
                 onChange={(e) => setNumero1(e.target.value)}
                 placeholder="Número 1"
-                style={{ marginRight: '10px' }}
+               
             />
             <input
                 type="number"
@@ -56,15 +65,15 @@ function App() {
                 <option value="division">División</option>
             </select>
             <br /><br />
-            <button onClick={calcular} disabled={operacion === 'division'}>
+            <button onClick={calcular} disabled={deshabilitarBoton}>
                 Calcular
             </button>
             <br /><br />
             {resultado !== null && (
                 <h3>Resultado: {resultado}</h3>
             )}
-            {operacion === 'division' && (
-                <p style={{ color: 'red' }}>La operación de división está deshabilitada.</p>
+            {deshabilitarBoton && (
+                <p>La operación de división está deshabilitada.</p>
             )}
         </div>
     );
