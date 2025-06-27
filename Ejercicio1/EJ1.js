@@ -5,13 +5,16 @@ const calcular = document.getElementById("calcular")
 const resultado = document.getElementById("resultado")
 
 
-operacion.addEventListener ("change",() =>{
-    if(operacion.value == "division"){
+function verificarDivision () {
+    if(operacion.value == "division" && parseFloat(valor2.value) === 0){
         calcular.disabled = true
     }else{
         calcular.disabled = false
     }
-})
+}
+
+operacion.addEventListener ("change",verificarDivision);
+valor2.addEventListener("input",verificarDivision)
 
 calcular.addEventListener("click",()=>{
 
@@ -36,6 +39,14 @@ calcular.addEventListener("click",()=>{
         break;
         case "multiplicacion":
             res=valor1*valor2;
+        break;
+         case "division":
+            if(valor2 !== 0){
+                res=valor1/valor2;
+            }else{
+                res = "error"
+            }
+            
         break;
         default:
             res = "no puede realizar"  
