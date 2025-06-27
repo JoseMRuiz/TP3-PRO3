@@ -4,7 +4,8 @@ function App() {
     const [operacion, setOperacion] = React.useState('suma');
     const [resultado, setResultado] = React.useState(null);
 
-    const calcular = () => {
+    const calcular = (e) => {
+       e.preventDefault();
         const n1 = parseFloat(numero1);
         const n2 = parseFloat(numero2);
 
@@ -44,6 +45,7 @@ function App() {
     return (
         <div >
             <h2>Calculadora</h2>
+            <form onSubmit={calcular} >
             <input
                 type="number"
                 value={numero1}
@@ -69,6 +71,8 @@ function App() {
                 Calcular
             </button>
             <br /><br />
+            </form>
+
             {resultado !== null && (
                 <h3>Resultado: {resultado}</h3>
             )}
